@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest"
+  },
+  "main": "/index.js",
+  "devDependencies": {}
+}
