@@ -3,12 +3,14 @@ import Square from './Square';
 
 export default function Board() {
 
+  let [currentPlayer, setCurrentPlayer] = useState('X');
   let [squares, setSquares] = useState(Array(9).fill(null));
 
   let handleClick = (i) => {
     const nextSquares = squares.slice();
-    nextSquares[i] = 'X';
+    nextSquares[i] = currentPlayer;
     setSquares(nextSquares);
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
   }
 
   return (
