@@ -12,14 +12,13 @@ function Game() {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-    setXIsNext(!xIsNext);
+    xIsNext = !xIsNext;
     console.log(currentMove); //To check current Move
   }
 
   function jumpTo(nextMove) {
     //Logic to move to that point in a game
     setCurrentMove(nextMove);
-    setXIsNext(nextMove % 2 === 0);
     setHistory(history.slice(0, nextMove + 1));
   }
 
