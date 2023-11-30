@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Square from './Square';
-
+import Board from './Board';
 //Top level Component
 function Game() {
 
@@ -8,14 +7,17 @@ function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[history.length - 1];
 
-  const handlePlay(nextSquares){
+  function handlePlay(nextSquares) {
     //updation game board logic
+    const nextHistory = [...history, nextSquares];
+    setHistory(nextHistory);
+    setXIsNext(!xIsNext);
   }
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={ } />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>
