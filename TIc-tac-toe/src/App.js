@@ -3,7 +3,7 @@ import Board from './Board';
 //Top level Component
 function Game() {
   const [currentMove, setCurrentMove] = useState(0);
-  const [xIsNext, setXIsNext] = useState(true);
+  let xIsNext = currentMove % 2 === 0;
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[currentMove];
 
