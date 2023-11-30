@@ -20,6 +20,7 @@ function Game() {
     //Logic to move to that point in a game
     setCurrentMove(nextMove);
     setXIsNext(nextMove % 2 === 0);
+    setHistory(history.slice(0, nextMove + 1));
   }
 
   const moves = history.map((squares, move) => {
