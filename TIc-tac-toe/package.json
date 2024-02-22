@@ -5,7 +5,9 @@
     "react-scripts": "latest"
   },
   "main": "/index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "name": "qrt5vg",
   "description": "Tick Tack Toe Game",
   "version": "0.0.6",
