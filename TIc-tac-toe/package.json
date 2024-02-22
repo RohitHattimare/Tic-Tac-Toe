@@ -7,7 +7,7 @@
   "main": "/index.js",
   "devDependencies": {},
   "name": "qrt5vg",
-  "description": null,
+  "description": "Tick Tack Toe Game",
   "version": "0.0.6",
   "scripts": {
     "start": "react-scripts start",

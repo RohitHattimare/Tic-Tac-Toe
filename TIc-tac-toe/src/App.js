@@ -5,6 +5,7 @@ function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   let xIsNext = currentMove % 2 === 0;
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [gameState, setGameState] = useState(null);
   const currentSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
@@ -14,6 +15,12 @@ function Game() {
     setCurrentMove(nextHistory.length - 1);
     xIsNext = !xIsNext;
     console.log(currentMove); //To check current Move
+  }
+
+  function resetGame() {
+    setCurrentMove(0);
+    setHistory(Array(9).fill(null));
+    setGameState(null);
   }
 
   function jumpTo(nextMove) {
@@ -38,13 +45,17 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} statusHandler={setGameState} />
       </div>
       <div className="game-info">
         <p>History : </p>
-        <ol>
+        <ol className='logs'>
           {moves}
         </ol>
+        <div className='logFooter'>
+          {(gameState || history.length === 10) && <h1 className='gameOver'>Game Over</h1>}
+          {(gameState || history.length === 10) && <button onChange={resetGame}>Start New Game</button>}
+        </div>
       </div>
     </div>
   );

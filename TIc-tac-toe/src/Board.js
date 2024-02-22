@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-export default function Board({ xIsNext, squares, onPlay }) {
+export default function Board({ xIsNext, squares, onPlay, statusHandler }) {
 
     let handleClick = (i) => {
         if (squares[i] || calculateWinner(squares)) {
@@ -19,13 +19,18 @@ export default function Board({ xIsNext, squares, onPlay }) {
     let status = null;
     if (winner) {
         status = 'Winner: ' + winner;
+        statusHandler(status);
     } else {
         status = 'Next player: ' + (xIsNext ? 'X' : 'O');
     }
 
     return (
         <>
-            <div className="status">{status}</div>
+            <div className="status">
+                <h1>
+                    {status}
+                </h1>
+            </div>
             <div className="board-row">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                 <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -43,6 +48,12 @@ export default function Board({ xIsNext, squares, onPlay }) {
             </div>
         </>
     );
+}
+
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        console.log(i, j + i)
+    }
 }
 
 function calculateWinner(squares) {
